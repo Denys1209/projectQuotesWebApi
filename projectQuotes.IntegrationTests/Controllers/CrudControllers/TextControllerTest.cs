@@ -11,7 +11,7 @@ using projectQuotesWebApi.Controllers.Models;
 
 namespace projectQuotes.IntegrationTests.Controllers.CrudControllers;
 
-public class TextControllerTest : BaseCrudControllerTest<GetTextDto, UpdateTextDto, CreateTextDto, ITextService, Text, GetTextDto, ReturnPageDto<GetTextDto>, TextController>
+public class TextControllerTest : BaseCrudControllerTest<GetTextDto, UpdateTextDto, CreateTextDto, ITextService, Text, GetTextDto, ReturnPageDto<GetTextDto>, TextController, SharedTextModels>
 {
     public TextControllerTest(IntegrationTestWebAppFactory factory) : base(factory)
     {
@@ -50,20 +50,6 @@ public class TextControllerTest : BaseCrudControllerTest<GetTextDto, UpdateTextD
         updateDto.AuthorId = authorId;
     }
 
-    protected override CreateTextDto GetCreateDtoSample()
-    {
-        return SharedTextModels.GetSampleCreateDto();
-    }
 
-
-    protected override Text GetModelSample()
-    {
-        return SharedTextModels.GetSample();
-    }
-
-    protected override UpdateTextDto GetUpdateDtoSample()
-    {
-        return SharedTextModels.GetSampleUpdateDto();
-    }
 }
 

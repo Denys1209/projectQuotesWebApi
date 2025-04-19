@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 namespace projectQuotes.IntegrationTests.Controllers.CrudControllers;
 
-public class AuthorControllerTest : BaseCrudControllerTest<GetAuthorDto, UpdateAuthorDto, CreateAuthorDto, IAuthorService, Author, GetAuthorDto, ReturnPageDto<GetAuthorDto>, AuthorController>
+public class AuthorControllerTest : BaseCrudControllerTest<GetAuthorDto, UpdateAuthorDto, CreateAuthorDto, IAuthorService, Author, GetAuthorDto, ReturnPageDto<GetAuthorDto>, AuthorController, SharedAuthorModels>
 {
     public AuthorControllerTest(IntegrationTestWebAppFactory factory) : base(factory)
     {
@@ -38,21 +38,4 @@ public class AuthorControllerTest : BaseCrudControllerTest<GetAuthorDto, UpdateA
         return new AuthorController(alternativeServices.GetRequiredService<IAuthorService>(), await GetHttpContextAccessForAdminUser(GetUserManager(AppDbContext), GetRoleManager(AppDbContext)));
     }
 
-
-
-    protected override CreateAuthorDto GetCreateDtoSample()
-    {
-        return SharedAuthorModels.GetSampleCreateDto();
-    }
-
-
-    protected override Author GetModelSample()
-    {
-        return SharedAuthorModels.GetSample();
-    }
-
-    protected override UpdateAuthorDto GetUpdateDtoSample()
-    {
-        return SharedAuthorModels.GetSampleUpdateDto();
-    }
 }

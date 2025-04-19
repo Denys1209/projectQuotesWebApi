@@ -1,0 +1,5 @@
+namespace projectQuotesWebApi.Application.Services.Models.Acts;
+
+public class ActService
+{
+}

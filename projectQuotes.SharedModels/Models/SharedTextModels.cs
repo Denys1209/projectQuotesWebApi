@@ -26,6 +26,9 @@ public class SharedTextModels : SharedModelsBase, IShareModels<CreateTextDto, Up
     {
         var dto = SharedTextModels.GetSampleCreateDto();
 
+        dto.AuthorId = await SharedAuthorModels.CreateModelWithAllDependenciesAsync(serviceProvider, cancellationToken);
+
+
         return await serviceProvider.GetService<ITextService>().CreateAsync(dto, cancellationToken);
     }
 

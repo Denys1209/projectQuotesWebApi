@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using projectQuotes.Domain.Models.Shared;
 using projectQuotes.Dtos.ResponseDto;
 using projectQuotes.Dtos.Shared;
+using projectQuotes.SharedModels.Shared;
 using projectQuotesWebApi.Application.Services.Shared;
 using projectQuotesWebApi.Shared;
 using Xunit;
@@ -20,7 +21,8 @@ public abstract class BaseCrudControllerTest<
     TModel,
     TGetLightDto,
     TReturnPageDto,
-    TController
+    TController,
+    TSharedModel
     >(IntegrationTestWebAppFactory factory) : BaseControllerTest(factory)
     where TModel : class, IModel
     where TUpdateDto : ModelDto
@@ -28,17 +30,29 @@ public abstract class BaseCrudControllerTest<
     where TReturnPageDto : ReturnPageDto<TGetLightDto>
     where TIService : ICrudService<TGetDto, TCreateDto, TUpdateDto, TModel, TGetLightDto>
     where TController : ICrudController<TUpdateDto, TCreateDto>
+    where TSharedModel : SharedModelsBase, IShareModels<TCreateDto,TUpdateDto,TModel>
 
 {
 
     protected abstract Task<TController> GetController(
        IServiceProvider alternativeServices);
 
-    protected abstract TCreateDto GetCreateDtoSample();
-    protected abstract TUpdateDto GetUpdateDtoSample();
-
-    protected abstract TModel GetModelSample();
     protected abstract IServiceCollection GetAllServices(IServiceCollection alternativeServices);
+
+    protected virtual  TCreateDto GetCreateDtoSample() 
+    {
+        return TSharedModel.GetSampleCreateDto();
+    }
+
+    protected virtual TUpdateDto GetUpdateDtoSample() 
+    {
+        return TSharedModel.GetSampleUpdateDto();
+    }
+
+    protected virtual TModel GetModelSample()
+    {
+        return TSharedModel.GetSample(); 
+    }
 
     protected virtual ICollection<TModel> GetCollectionOfModels(int howMany)
     {

@@ -32,7 +32,6 @@
 
   <ItemGroup>
     <Folder Include="Repositories\RelationRepositories\" />
-    <Folder Include="Services\CrudServices\" />
     <Folder Include="Services\RelationServices\" />
   </ItemGroup>
 

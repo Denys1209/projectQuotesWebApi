@@ -3,6 +3,8 @@ using projectQuotes.Application.Repositories.Shared;
 using projectQuotes.Domain.ForFilter;
 using projectQuotes.Domain.ForSort;
 using projectQuotes.Domain.Models;
+using projectQuotes.Domain.Models.Enteties;
+using projectQuotes.Dtos.Dto.Models.Authors;
 using projectQuotes.Dtos.Dto.Users;
 using projectQuotes.Dtos.Shared;
 
@@ -38,5 +40,13 @@ public class MappingProfiles : Profile
 
         CreateMap<GetUserDto, User>();
 
-          }
+
+        //Author
+        CreateMap<Author, GetAuthorDto>();
+
+        CreateMap< UpdateAuthorDto, Author>();
+
+        CreateMap<CreateAuthorDto, Author>();
+
+    }
 }

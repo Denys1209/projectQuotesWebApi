@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\Models\" />
     <Folder Include="Repositories\Polimorfizms\" />
     <Folder Include="Repositories\Relations\" />
   </ItemGroup>

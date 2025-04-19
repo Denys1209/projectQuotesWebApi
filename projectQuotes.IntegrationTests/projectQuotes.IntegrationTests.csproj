@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\projectQuotes.Domain\projectQuotes.Domain.csproj" />
     <ProjectReference Include="..\projectQuotes.Dtos\projectQuotes.Dtos.csproj" />
+    <ProjectReference Include="..\projectQuotes.SharedModels\projectQuotes.SharedModels.csproj" />
     <ProjectReference Include="..\projectQuotesWebApi.Application.Services\projectQuotesWebApi.Application.Services.csproj" />
     <ProjectReference Include="..\projectQuotesWebApi\projectQuotesWebApi.csproj" />
   </ItemGroup>
@@ -34,7 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\CrudControllers\" />
     <Folder Include="Controllers\RelationControllers\" />
   </ItemGroup>
 

@@ -3,17 +3,29 @@ using FluentAssertions;
 using projectQuotes.Application.Repositories.Shared;
 using projectQuotes.Domain.ForFilter;
 using projectQuotes.Domain.Models.Shared;
+using projectQuotes.Dtos.Shared;
 using projectQuotes.EfPersistence.Data;
+using projectQuotes.EfPersistence.Repositories;
+using projectQuotes.SharedModels.Shared;
 
 namespace projectQuotes.UnitTests.Shared.Repositories;
 
-public abstract class SharedRepositoryTest<TModel, TRepository>
+public abstract class SharedRepositoryTest<TModel, TUpdateDto, TCreateDto, TRepository, TSharedModel>
     : SharedUnitTest
     where TModel : class, IModel
-    where TRepository : ICrudRepository<TModel>
+    where TUpdateDto : ModelDto
+    where TCreateDto : class
+    where TRepository : CrudRepository<TModel>, ICrudRepository<TModel>
+    where TSharedModel : SharedModelsBase, IShareModels<TCreateDto,TUpdateDto,TModel>
 {
-    protected abstract TModel GetSample();
-    protected abstract TModel GetSampleForUpdate();
+    protected TModel GetSample() 
+    {
+        return TSharedModel.GetSample();
+    }
+    protected TModel GetSampleForUpdate() 
+    {
+        return TSharedModel.GetSampleForUpdate();
+    }
     protected abstract TRepository GetRepository(AppDbContext appDbContext);
 
 

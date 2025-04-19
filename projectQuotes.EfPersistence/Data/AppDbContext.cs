@@ -6,12 +6,14 @@ using projectQuotes.Domain.Models;
 using projectQuotes.Domain.Models.Shared;
 using projectQuotes.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using projectQuotes.Domain.Models.Enteties;
 
 namespace projectQuotes.EfPersistence.Data;
 
 public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {
   
+    public DbSet<Author> Authors { get; set; }
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {

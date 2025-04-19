@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using projectQuotes.Application.Repositories.Shared;
 using projectQuotes.Domain.Models.Shared;
 using projectQuotes.Dtos.Shared;
+using projectQuotes.SharedModels.Shared;
 using projectQuotes.UnitTests;
 using projectQuotesWebApi.Application.Services.Helpers;
 using projectQuotesWebApi.Application.Services.Shared;
@@ -16,19 +17,38 @@ public abstract class SharedServiceTest<TGetDto,
     TModel,
     TGetLightDto,
     TRepository,
-    TService> : SharedUnitTest
+    TService,
+    TSharedModel> : SharedUnitTest
 
     where TModel : class, IModel
     where TRepository : ICrudRepository<TModel>
     where TGetDto : ModelDto
     where TUpdateDto : ModelDto
     where TService : ICrudService<TGetDto, TCreateDto, TUpdateDto, TModel, TGetLightDto>
+    where TSharedModel : SharedModelsBase, IShareModels<TCreateDto,TUpdateDto,TModel>
 {
-    protected abstract IServiceCollection GetAllServices(IServiceCollection alternativeServices);
     protected abstract TService GetService(IServiceCollection alternativeServices);
 
-    protected abstract TCreateDto GetCreateDtoSample();
-    protected abstract TUpdateDto GetUpdateDtoSample();
+
+    protected IServiceCollection GetAllServices(IServiceCollection alternativeServices)
+    {
+        alternativeServices.AddSingleton(GetDatabaseContext());
+
+        alternativeServices.AddSingleton(Mapper);
+
+        TSharedModel.AddAllDependencies(alternativeServices);
+
+        return alternativeServices;
+    }
+
+    protected TCreateDto GetCreateDtoSample() 
+    {
+        return TSharedModel.GetSampleCreateDto();
+    }
+    protected TUpdateDto GetUpdateDtoSample() 
+    {
+        return TSharedModel.GetSampleUpdateDto();
+    }
 
     protected IMapper Mapper => new MapperConfiguration(cfg => cfg.AddProfile(new MappingProfiles())).CreateMapper();
 

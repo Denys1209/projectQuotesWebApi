@@ -11,4 +11,6 @@ public class Act : Model
     public required int Number { get; set; } 
 
     public required virtual Text Text { get; set; }
+
+    public virtual HashSet<Scene> Scenes { get; set; }
 }

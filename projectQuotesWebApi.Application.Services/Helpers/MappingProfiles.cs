@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using projectQuotes.Application.Repositories.Shared;
 using projectQuotes.Domain.ForFilter;
 using projectQuotes.Domain.ForSort;
@@ -6,6 +7,7 @@ using projectQuotes.Domain.Models;
 using projectQuotes.Domain.Models.Enteties;
 using projectQuotes.Dtos.Dto.Models.Acts;
 using projectQuotes.Dtos.Dto.Models.Authors;
+using projectQuotes.Dtos.Dto.Models.Scenes;
 using projectQuotes.Dtos.Dto.Models.Texts;
 using projectQuotes.Dtos.Dto.Users;
 using projectQuotes.Dtos.Shared;
@@ -46,23 +48,33 @@ public class MappingProfiles : Profile
         //Author
         CreateMap<Author, GetAuthorDto>();
 
-        CreateMap< UpdateAuthorDto, Author>();
+        CreateMap<UpdateAuthorDto, Author>();
 
         CreateMap<CreateAuthorDto, Author>();
 
         //Text
         CreateMap<Text, GetTextDto>();
 
-        CreateMap< UpdateTextDto, Text>();
+        CreateMap<UpdateTextDto, Text>();
 
         CreateMap<CreateTextDto, Text>();
 
         //Act
         CreateMap<Act, GetActDto>();
 
-        CreateMap<UpdateActDto, Act>();
+        CreateMap<UpdateActDto, Act>().ForMember(e => e.Scenes, op => op.Ignore());
 
-        CreateMap<CreateActDto, Act>();
+        CreateMap<CreateActDto, Act>().ForMember(e => e.Scenes, op => op.Ignore());
+
+        //Scene
+        CreateMap<Scene, GetSceneDto>();
+
+        CreateMap<Scene, GetLightSceneDto>();
+
+        CreateMap<UpdateSceneDto, Scene>();
+
+        CreateMap<CreateSceneDto, Scene>();
+
 
 
     }

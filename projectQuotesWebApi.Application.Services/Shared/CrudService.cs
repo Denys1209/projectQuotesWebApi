@@ -7,19 +7,19 @@ using System.Runtime.InteropServices;
 
 namespace projectQuotesWebApi.Application.Services.Shared;
 
-public abstract class CrudService<TGetDto, TCreateDto, TUpdateDto, TModel, TGetLightDto, TRepository>
+public abstract class CrudService<TGetDto, TCreateDto, TUpdateDto, TModel, TGetLightDto, TIRepository>
     : ICrudService<TGetDto, TCreateDto, TUpdateDto, TModel, TGetLightDto>
     where TModel : class, IModel
-    where TRepository : ICrudRepository<TModel>
+    where TIRepository : ICrudRepository<TModel>
     where TGetDto : ModelDto
     where TUpdateDto : ModelDto
 {
-    protected readonly TRepository Repository;
+    protected readonly TIRepository Repository;
     protected readonly IMapper Mapper;
 
-    public CrudService(TRepository relationRepository, IMapper mapper)
+    public CrudService(TIRepository repository, IMapper mapper)
     {
-        Repository = relationRepository;
+        Repository = repository;
         Mapper = mapper;
     }
 

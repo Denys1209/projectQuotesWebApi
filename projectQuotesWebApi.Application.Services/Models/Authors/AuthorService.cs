@@ -8,7 +8,7 @@ namespace projectQuotesWebApi.Application.Services.Models.Authors;
 
 public class AuthorService : CrudService<GetAuthorDto, CreateAuthorDto, UpdateAuthorDto, Author, GetAuthorDto, IAuthorRepository>, IAuthorService
 {
-    public AuthorService(IAuthorRepository relationRepository, IMapper mapper) : base(relationRepository, mapper)
+    public AuthorService(IAuthorRepository repository, IMapper mapper) : base(repository, mapper)
     {
     }
 }

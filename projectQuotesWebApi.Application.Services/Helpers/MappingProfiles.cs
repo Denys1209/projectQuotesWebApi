@@ -5,6 +5,7 @@ using projectQuotes.Domain.ForSort;
 using projectQuotes.Domain.Models;
 using projectQuotes.Domain.Models.Enteties;
 using projectQuotes.Dtos.Dto.Models.Authors;
+using projectQuotes.Dtos.Dto.Models.Texts;
 using projectQuotes.Dtos.Dto.Users;
 using projectQuotes.Dtos.Shared;
 
@@ -47,6 +48,14 @@ public class MappingProfiles : Profile
         CreateMap< UpdateAuthorDto, Author>();
 
         CreateMap<CreateAuthorDto, Author>();
+
+        //Text
+        CreateMap<Text, GetTextDto>();
+
+        CreateMap< UpdateTextDto, Text>();
+
+        CreateMap<CreateTextDto, Text>();
+
 
     }
 }

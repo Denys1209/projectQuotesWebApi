@@ -7,6 +7,7 @@ using projectQuotes.Domain.Models;
 using projectQuotes.Domain.Models.Enteties;
 using projectQuotes.Dtos.Dto.Models.Acts;
 using projectQuotes.Dtos.Dto.Models.Authors;
+using projectQuotes.Dtos.Dto.Models.Charcters;
 using projectQuotes.Dtos.Dto.Models.Scenes;
 using projectQuotes.Dtos.Dto.Models.Texts;
 using projectQuotes.Dtos.Dto.Users;
@@ -75,7 +76,12 @@ public class MappingProfiles : Profile
 
         CreateMap<CreateSceneDto, Scene>();
 
+        //Character
+        CreateMap<Character, GetCharacterDto>();
 
+        CreateMap<UpdateCharacterDto, Character>();
+
+        CreateMap<CreateCharacterDto, Character>();
 
     }
 }

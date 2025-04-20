@@ -34,7 +34,9 @@ public class SharedTagModels : SharedModelsBase, IShareModels<CreateTagDto, Upda
             Text = SharedTextModels.GetSample(),
             Name = "sasa",
             Slug = "saa",
-            Describtion = "sasa"
+            Describtion = "sasa",
+            Quotes = []
+            
 
         };
     }
@@ -46,7 +48,8 @@ public class SharedTagModels : SharedModelsBase, IShareModels<CreateTagDto, Upda
             TextId = Guid.NewGuid(),
             Name = "sasa",
             Slug = "saa",
-            Describtion = "sasa"
+            Describtion = "sasa",
+
         };
     }
 
@@ -56,7 +59,8 @@ public class SharedTagModels : SharedModelsBase, IShareModels<CreateTagDto, Upda
         {
             Name = "sasasasa",
             Slug = "sssasasaa",
-            Describtion = "sa"
+            Describtion = "sa",
+            Quotes = []
         };
     }
 

@@ -24,7 +24,7 @@ SharedQuoteModels>
     {
         var builder = alternativeServices.BuildServiceProvider();
 
-        return new QuoteService(builder.GetRequiredService<IQuoteRepository>(), builder.GetRequiredService<IUserRepository>(), builder.GetRequiredService<ICharacterRepository>(), builder.GetRequiredService<ITextRepository>(), Mapper);
+        return new QuoteService(builder.GetRequiredService<IQuoteRepository>(), builder.GetRequiredService<IUserRepository>(), builder.GetRequiredService<ICharacterRepository>(), builder.GetRequiredService<ITextRepository>(), builder.GetRequiredService<ITagRepository>(), Mapper);
     }
   protected override IServiceCollection GetAllServices(IServiceCollection alternativeServices)
     {

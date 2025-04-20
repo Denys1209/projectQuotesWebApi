@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Repositories\Polimorfizms\" />
-    <Folder Include="Repositories\Relations\" />
   </ItemGroup>
 
 </Project>

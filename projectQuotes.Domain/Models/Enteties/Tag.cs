@@ -18,5 +18,7 @@ public class Tag : Model
     [StringLength(TagConstants.DescribtionLength)]
     public required string Describtion { get; set; }
 
+    public required virtual HashSet<Quote> Quotes { get; set; } = new HashSet<Quote>();
+
 
 }

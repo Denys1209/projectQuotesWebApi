@@ -15,6 +15,7 @@ public class SharedQuoteModels : SharedModelsBase, IShareModels<CreateQuoteDto, 
         SharedTextModels.AddAllDependencies(services);
         SharedUserModels.AddAllDependencies(services);
         SharedCharacterModels.AddAllDependencies(services);
+        SharedTagModels.AddAllDependencies(services);
         services.AddScoped<IQuoteRepository, QuoteRepository>();
         services.AddScoped<IQuoteService, QuoteService>();
 
@@ -25,6 +26,9 @@ public class SharedQuoteModels : SharedModelsBase, IShareModels<CreateQuoteDto, 
         var dto = SharedQuoteModels.GetSampleCreateDto();
 
         dto.TextId = await SharedTextModels.CreateModelWithAllDependenciesAsync(serviceProvider, cancellationToken);
+        dto.CreatorId = await SharedUserModels.CreateModelWithAllDependenciesAsync(serviceProvider, cancellationToken);
+        dto.CharacterId = await SharedCharacterModels.CreateModelWithAllDependenciesAsync(serviceProvider, cancellationToken);
+        dto.TagIds = [await SharedTagModels.CreateModelWithAllDependenciesAsync(serviceProvider, cancellationToken)];
 
         return await serviceProvider.GetService<IQuoteService>().CreateAsync(dto, cancellationToken);
     }
@@ -39,6 +43,7 @@ public class SharedQuoteModels : SharedModelsBase, IShareModels<CreateQuoteDto, 
             Creator = SharedUserModels.GetSample(),
             Description = "sas",
             QuoteText = "sasa",
+            Tags = []
 
         };
     }
@@ -52,7 +57,8 @@ public class SharedQuoteModels : SharedModelsBase, IShareModels<CreateQuoteDto, 
             Context = "sasas",
             CreatorId = Guid.NewGuid(),
             Description = "sasa",
-            QuoteText = "sasa"
+            QuoteText = "sasa",
+            TagIds = [Guid.NewGuid()]
         };
     }
 
@@ -66,6 +72,7 @@ public class SharedQuoteModels : SharedModelsBase, IShareModels<CreateQuoteDto, 
             Creator = SharedUserModels.GetSampleForUpdate(),
             Description = "sasa",
             QuoteText = "sasa",
+            Tags= []    
             
         };
     }
@@ -79,7 +86,8 @@ public class SharedQuoteModels : SharedModelsBase, IShareModels<CreateQuoteDto, 
             Context = "sasasa2121" ,
             CreatorId= Guid.NewGuid(),
             Description = "3223",
-            QuoteText = "2121"
+            QuoteText = "2121",
+            TagIds= [Guid.NewGuid()]
         };
     }
 }

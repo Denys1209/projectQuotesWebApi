@@ -1,4 +1,5 @@
 ﻿using projectQuotes.Dtos.Dto.Models.Charcters;
+using projectQuotes.Dtos.Dto.Models.Tags;
 using projectQuotes.Dtos.Dto.Models.Texts;
 using projectQuotes.Dtos.Dto.Users;
 using projectQuotes.Dtos.Shared;
@@ -14,6 +15,8 @@ public class GetQuoteDto : ModelDtoWithTimeStamp
     public required GetCharacterDto Character { get; set; }
 
     public required GetLightUserDto Creator { get; set; }
+
+    public required List<GetTagDto> Tags { get; set; }
 
     public required string QuoteText { get; set; }
 

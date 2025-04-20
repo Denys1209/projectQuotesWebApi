@@ -16,8 +16,4 @@
     <ProjectReference Include="..\projectQuotes.Dtos\projectQuotes.Dtos.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Relations\" />
-  </ItemGroup>
-
 </Project>

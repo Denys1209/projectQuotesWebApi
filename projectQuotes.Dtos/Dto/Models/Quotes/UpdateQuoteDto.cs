@@ -19,6 +19,8 @@ public class UpdateQuoteDto :ModelDto
 
     [EntityValidation(typeof(User))] public required Guid CreatorId { get; set; }
 
+     [EntityValidation(typeof(Tag))] public required List<Guid> TagIds { get; set; }
+
     public required string QuoteText { get; set; }
 
     public required string Context { get; set; }

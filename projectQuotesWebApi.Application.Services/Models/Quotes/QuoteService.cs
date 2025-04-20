@@ -16,11 +16,14 @@ public class QuoteService : CrudService<GetQuoteDto, CreateQuoteDto, UpdateQuote
 
     private readonly ICharacterRepository characterRepository;
 
-    public QuoteService(IQuoteRepository repository, IUserRepository userRepository, ICharacterRepository characterRepository, ITextRepository textRepository, IMapper mapper) : base(repository, mapper)
+    private readonly ITagRepository tagRepository;
+
+    public QuoteService(IQuoteRepository repository, IUserRepository userRepository, ICharacterRepository characterRepository, ITextRepository textRepository, ITagRepository tagRepository, IMapper mapper) : base(repository, mapper)
     {
         this.textRepository = textRepository;
         this.userRepository = userRepository;
         this.characterRepository = characterRepository;
+        this.tagRepository = tagRepository; 
     }
 
    public override async Task<Guid> CreateAsync(CreateQuoteDto createDto, CancellationToken cancellationToken)
@@ -31,6 +34,9 @@ public class QuoteService : CrudService<GetQuoteDto, CreateQuoteDto, UpdateQuote
         model.Text = await textRepository.GetAsync(createDto.TextId, cancellationToken);
         model.Character = await characterRepository.GetAsync(createDto.CharacterId, cancellationToken);
         model.Creator = await userRepository.GetAsync(createDto.CreatorId, cancellationToken);
+        model.Tags = (await tagRepository.GetAllModelsByIdsAsync(createDto.TagIds, cancellationToken)).ToHashSet();
+
+
 
         return await Repository.AddAsync(model, cancellationToken);
     }
@@ -43,6 +49,7 @@ public class QuoteService : CrudService<GetQuoteDto, CreateQuoteDto, UpdateQuote
         model.Text = await textRepository.GetAsync(updateQuoteDto.TextId, cancellationToken);
         model.Character = await characterRepository.GetAsync(updateQuoteDto.CharacterId, cancellationToken);
         model.Creator = await userRepository.GetAsync(updateQuoteDto.CreatorId, cancellationToken);
+        model.Tags = (await tagRepository.GetAllModelsByIdsAsync(updateQuoteDto.TagIds, cancellationToken)).ToHashSet();
 
         await Repository.UpdateAsync(model, cancellationToken);
     }

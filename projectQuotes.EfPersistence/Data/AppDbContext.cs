@@ -7,6 +7,7 @@ using projectQuotes.Domain.Models.Shared;
 using projectQuotes.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using projectQuotes.Domain.Models.Enteties;
+using projectQuotes.Domain.Models.Relations;
 
 namespace projectQuotes.EfPersistence.Data;
 
@@ -26,6 +27,8 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     public DbSet<Tag> Tags { get; set; }
 
     public DbSet<Quote> Quotes { get; set; }
+
+    public DbSet<TagQuote> TagQuotes { get; set; }
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
@@ -75,7 +78,10 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
             .WithMany()
             .UsingEntity<IdentityUserRole<Guid>>();
 
-
-
+        //Quotes
+        modelBuilder.Entity<Quote>()
+            .HasMany(e => e.Tags)
+            .WithMany(e => e.Quotes)
+            .UsingEntity<TagQuote>();
     }
 }

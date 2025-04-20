@@ -30,9 +30,4 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\RelationRepositories\" />
-    <Folder Include="Services\RelationServices\" />
-  </ItemGroup>
-
 </Project>

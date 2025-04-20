@@ -8,6 +8,7 @@ using projectQuotes.Domain.Models.Enteties;
 using projectQuotes.Dtos.Dto.Models.Acts;
 using projectQuotes.Dtos.Dto.Models.Authors;
 using projectQuotes.Dtos.Dto.Models.Charcters;
+using projectQuotes.Dtos.Dto.Models.Quotes;
 using projectQuotes.Dtos.Dto.Models.Scenes;
 using projectQuotes.Dtos.Dto.Models.Tags;
 using projectQuotes.Dtos.Dto.Models.Texts;
@@ -36,6 +37,7 @@ public class MappingProfiles : Profile
         //User
         CreateMap<User, GetUserDto>();
 
+        CreateMap<User, GetLightUserDto>();
 
         CreateMap<User, UpdateUserDto>();
 
@@ -90,6 +92,14 @@ public class MappingProfiles : Profile
         CreateMap<UpdateTagDto, Tag>();
 
         CreateMap<CreateTagDto, Tag>();
+
+        //Quote
+        CreateMap<Quote, GetQuoteDto>();
+
+        CreateMap<UpdateQuoteDto, Quote>();
+
+        CreateMap<CreateQuoteDto, Quote>();
+
 
 
     }

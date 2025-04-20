@@ -13,12 +13,5 @@ public class GetUserDto : ModelDto
 
     public required string UserName { get; set; }
 
-    public required int IconNumber { get; set; }
 
-    public string? CityName { get; set; }
-
-    public DateOnly? BirthDate { get; set; }
-
-    public required List<string> FavoriteHotelsIds { get; set; }
-    public required List<string> FavoriteToursIds { get; set; }
 }

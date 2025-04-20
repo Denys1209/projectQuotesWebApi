@@ -1,5 +1,11 @@
-namespace projectQuotesWebApi.Application.Services.Models.Acts;
+using projectQuotes.Domain.Models.Shared;
+using System.Globalization;
 
-public class ActService
+namespace projectQuotes.Domain.Models.Enteties;
+
+public class Quote : ModelWithTimeStamp
 {
+    public required virtual Text Text { get; set; }
+
+    public required string QuoteText { get; set; }
 }

@@ -25,6 +25,8 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 
     public DbSet<Tag> Tags { get; set; }
 
+    public DbSet<Quote> Quotes { get; set; }
+
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
         Database.EnsureCreated();

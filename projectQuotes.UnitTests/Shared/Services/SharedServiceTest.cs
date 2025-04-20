@@ -30,7 +30,7 @@ public abstract class SharedServiceTest<TGetDto,
     protected abstract TService GetService(IServiceCollection alternativeServices);
 
 
-    protected IServiceCollection GetAllServices(IServiceCollection alternativeServices)
+    protected virtual IServiceCollection GetAllServices(IServiceCollection alternativeServices)
     {
         alternativeServices.AddSingleton(GetDatabaseContext());
 

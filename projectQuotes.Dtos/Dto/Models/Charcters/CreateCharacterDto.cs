@@ -10,7 +10,7 @@ namespace projectQuotes.Dtos.Dto.Models.Charcters;
 
 [ExportTsInterface]
 [ModelMetadataType(typeof(Character))]
-public class CreateCharacterDto : ModelDto
+public class CreateCharacterDto 
 {
     public required string Name { get; set; }
 

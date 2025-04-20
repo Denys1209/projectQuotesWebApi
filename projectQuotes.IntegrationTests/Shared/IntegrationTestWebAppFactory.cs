@@ -13,7 +13,7 @@ public class IntegrationTestWebAppFactory : WebApplicationFactory<Program>, IAsy
 {
     private readonly PostgreSqlContainer _dbContainder = new PostgreSqlBuilder()
         .WithImage("postgres:alpine")
-        .WithDatabase("diplom")
+        .WithDatabase("projectQuotes")
         .WithUsername("postgres")
         .WithPassword("root")
         .WithCleanUp(true)

@@ -1,70 +1,74 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using projectQuotes.Application.Repositories.Models;
 using projectQuotes.Domain.Models.Enteties;
-using projectQuotes.Dtos.Dto.Models.Charcters;
+using projectQuotes.Dtos.Dto.Models.Tags;
 using projectQuotes.EfPersistence.Repositories.Models;
 using projectQuotes.SharedModels.Shared;
-using projectQuotesWebApi.Application.Services.Models.Chracters;
+using projectQuotesWebApi.Application.Services.Models.Tags;
 
 namespace projectQuotes.SharedModels.Models;
 
-public class SharedCharacterModels : SharedModelsBase, IShareModels<CreateCharacterDto, UpdateCharacterDto, Character>
+public class SharedTagModels : SharedModelsBase, IShareModels<CreateTagDto, UpdateTagDto, Tag>
 {
     public static void AddAllDependencies(IServiceCollection services)
     {
         SharedTextModels.AddAllDependencies(services);
-        services.AddScoped<ICharacterRepository, CharacterRepository>();
-        services.AddScoped<ICharacterService, CharacterService>();
+        services.AddScoped<ITagRepository, TagRepository>();
+        services.AddScoped<ITagService, TagService>();
 
     }
 
     public static async Task<Guid> CreateModelWithAllDependenciesAsync(IServiceProvider serviceProvider, CancellationToken cancellationToken)
     {
-        var dto = SharedCharacterModels.GetSampleCreateDto();
+        var dto = SharedTagModels.GetSampleCreateDto();
 
         dto.TextId = await SharedTextModels.CreateModelWithAllDependenciesAsync(serviceProvider, cancellationToken);
 
-        return await serviceProvider.GetService<ICharacterService>().CreateAsync(dto, cancellationToken);
+        return await serviceProvider.GetService<ITagService>().CreateAsync(dto, cancellationToken);
     }
 
-    public static Character GetSample()
+    public static Tag GetSample()
     {
-        return new Character()
+        return new Tag()
         {
             Text = SharedTextModels.GetSample(),
             Name = "sasa",
-            Slug = "saa"
+            Slug = "saa",
+            Describtion = "sasa"
 
         };
     }
 
-    public static CreateCharacterDto GetSampleCreateDto()
+    public static CreateTagDto GetSampleCreateDto()
     {
-        return new CreateCharacterDto()
+        return new CreateTagDto()
         {
             TextId = Guid.NewGuid(),
             Name = "sasa",
-            Slug = "saa"
+            Slug = "saa",
+            Describtion = "sasa"
         };
     }
 
-    public static Character GetSampleForUpdate()
+    public static Tag GetSampleForUpdate()
     {
-        return new Character()
+        return new Tag()
         {
             Name = "sasasasa",
             Slug = "sssasasaa",
-            Text = SharedTextModels.GetSampleForUpdate()
+            Describtion = "sa"
         };
     }
 
-    public static UpdateCharacterDto GetSampleUpdateDto()
+    public static UpdateTagDto GetSampleUpdateDto()
     {
-        return new UpdateCharacterDto()
+        return new UpdateTagDto()
         {
             TextId = Guid.NewGuid(),
             Name="_#p1",
-            Slug="1232"
+            Slug="1232",
+            Describtion = "sasas"
+            
         };
     }
 }

@@ -23,6 +23,8 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 
     public DbSet<Character> Characters { get; set; }
 
+    public DbSet<Tag> Tags { get; set; }
+
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
         Database.EnsureCreated();

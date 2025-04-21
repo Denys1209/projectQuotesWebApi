@@ -10,6 +10,7 @@ using projectQuotes.Infrastructure.LinkFactories;
 using Npgsql;
 using projectQuotesWebApi.Application.Services.Shared;
 using projectQuotesWebApi.Application.Services.Shared.Relation;
+using projectQuotes.Application.Repositories.Relations;
 
 namespace projectQuotesWebApi.Extensions;
 

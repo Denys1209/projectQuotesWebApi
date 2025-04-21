@@ -12,5 +12,5 @@ public class Act : Model
 
     public required virtual Text Text { get; set; }
 
-    public virtual HashSet<Scene> Scenes { get; set; }
+    public  virtual ICollection<Scene> Scenes { get; set; } = new HashSet<Scene>();
 }

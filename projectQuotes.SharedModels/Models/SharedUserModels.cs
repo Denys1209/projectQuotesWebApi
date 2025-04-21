@@ -17,6 +17,7 @@ public class SharedUserModels : SharedModelsBase, IShareModels<UserRegistrationD
     {
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserService, UserService>();
+        SharedQuoteModels.AddAllDependencies(services);
     }
 
 
@@ -34,6 +35,7 @@ public class SharedUserModels : SharedModelsBase, IShareModels<UserRegistrationD
             Email = "test@gmail.com",
             UserName = "Test",
             PasswordHash = "test",
+            FavoriteQuotes = []
 
         };
 
@@ -46,6 +48,7 @@ public class SharedUserModels : SharedModelsBase, IShareModels<UserRegistrationD
             Email = "test1@gmail.com",
             UserName = "Test",
             PasswordHash = "test",
+            FavoriteQuotes = []
         };
     }
     public static UserRegistrationDto GetSampleCreateDto()

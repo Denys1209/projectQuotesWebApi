@@ -32,6 +32,7 @@ public class BaseControllerTest : SharedIntegrationTest
         Email = "Admin@admin.com",
         UserName = "Admin",
         PasswordHash = "Password123!",
+        FavoriteQuotes = []
 
     };
 
@@ -40,6 +41,7 @@ public class BaseControllerTest : SharedIntegrationTest
         Email = "user@user.com",
         UserName = "user",
         PasswordHash = "User123!",
+        FavoriteQuotes = []
 
     };
 

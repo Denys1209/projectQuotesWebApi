@@ -45,6 +45,7 @@ public class SharedQuoteModels : SharedModelsBase, IShareModels<CreateQuoteDto, 
             QuoteText = "sasa",
             Tags = [],
             IsPublished = false,
+            InFavoriteQuotes = []
 
         };
     }
@@ -76,6 +77,7 @@ public class SharedQuoteModels : SharedModelsBase, IShareModels<CreateQuoteDto, 
             QuoteText = "sasa",
             Tags= [],
             IsPublished = true,
+            InFavoriteQuotes= []
             
         };
     }

@@ -26,6 +26,7 @@ public class UserRepositoryTest : SharedUnitTest
             Email = testUser.Email,
             PasswordHash = testUser.PasswordHash,
             Roles = [role!],
+            FavoriteQuotes = [],
         }, new CancellationToken());
 
         // Act
@@ -55,6 +56,7 @@ public class UserRepositoryTest : SharedUnitTest
             Email = testUser.Email,
             PasswordHash = testUser.PasswordHash,
             Roles = [role!],
+            FavoriteQuotes= [],
         }, new CancellationToken());
 
         // Act
@@ -86,6 +88,7 @@ public class UserRepositoryTest : SharedUnitTest
             Email = testUser.Email,
             PasswordHash = testUser.PasswordHash,
             Roles = [role!],
+            FavoriteQuotes = []
         }, new CancellationToken());
 
         // Act

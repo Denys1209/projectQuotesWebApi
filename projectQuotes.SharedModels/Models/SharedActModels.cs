@@ -33,7 +33,8 @@ public class SharedActModels : SharedModelsBase, IShareModels<CreateActDto, Upda
         return new Act()
         {
             Number = 1,
-            Text = SharedTextModels.GetSample()
+            Text = SharedTextModels.GetSample(),
+            Scenes = []
         };
     }
 
@@ -51,7 +52,8 @@ public class SharedActModels : SharedModelsBase, IShareModels<CreateActDto, Upda
         return new Act()
         {
             Number = 2,
-            Text = SharedTextModels.GetSampleForUpdate()
+            Text = SharedTextModels.GetSampleForUpdate(),
+            Scenes = []
         };
     }
 

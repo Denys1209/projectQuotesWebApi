@@ -1,26 +1,23 @@
 ﻿using projectQuotes.Constants.Models;
+using projectQuotes.Domain.Models.Enteties;
 using projectQuotes.Domain.Models.Shared;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.InteropServices.Marshalling;
+using System.ComponentModel.DataAnnotations;
+using projectQuotes.Domain.Models;
 
-namespace projectQuotes.Domain.Models.Enteties;
+namespace projectQuotes.UnitTests.Shared.TestModels;
 
-public class Quote : ModelWithTimeStamp
+public class TestQuote : ModelWithTimeStamp
 {
-
-    public  virtual ICollection<Tag> Tags { get; set; } = new HashSet<Tag>();
-    public  virtual ICollection<User> InFavoriteQuotes { get; set; } = new HashSet<User>();
+    public virtual ICollection<Tag> Tags { get; set; } = new HashSet<Tag>();
+    public virtual ICollection<User> InFavoriteQuotes { get; set; } = new HashSet<User>();
 
     public required virtual Text Text { get; set; }
 
     public required virtual Character Character { get; set; }
 
-    [ForeignKey(nameof(Creator))]
     public Guid CreatorId { get; set; }
 
-    [NotMapped]
-    public virtual User Creator { get; set; } = null!;
 
     [StringLength(QuoteConstants.QuoteTextLength)]
     public required string QuoteText { get; set; }
@@ -34,5 +31,4 @@ public class Quote : ModelWithTimeStamp
     public required string Description { get; set; }
 
     public required bool IsPublished { get; set; }
-
 }

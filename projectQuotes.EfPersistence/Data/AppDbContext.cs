@@ -32,6 +32,8 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 
     public DbSet<NoteOnQuote> NoteOnQuotes { get; set; }
 
+    public DbSet<FavoriteQuote> FavoriteQuotes { get; set; }
+
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
         Database.EnsureCreated();
@@ -55,6 +57,17 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
                 NormalizedName = UserConstants.UserRole.ToUpper()
             }
         );
+
+        modelBuilder.Entity<Quote>(entity =>
+        {
+            entity.HasOne(q => q.Creator)
+                  .WithMany(u => u.CreatedQuotes)
+                  .HasForeignKey(q => q.CreatorId)
+                  .OnDelete(DeleteBehavior.Restrict);
+
+            // Make sure this property is mapped correctly
+            entity.Property(q => q.CreatorId);
+        });
 
         // Relations
         foreach (var entityType in modelBuilder.Model.GetEntityTypes()
@@ -80,10 +93,18 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
             .WithMany()
             .UsingEntity<IdentityUserRole<Guid>>();
 
+     
         //Quotes
         modelBuilder.Entity<Quote>()
             .HasMany(e => e.Tags)
             .WithMany(e => e.Quotes)
             .UsingEntity<TagQuote>();
+
+        modelBuilder.Entity<Quote>()
+            .HasMany(e => e.InFavoriteQuotes)
+            .WithMany(e => e.FavoriteQuotes)
+            .UsingEntity<FavoriteQuote>();
+
+       
     }
 }

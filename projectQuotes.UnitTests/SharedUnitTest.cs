@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
 using projectQuotes.Domain.Models;
 using projectQuotes.EfPersistence.Data;
+using projectQuotes.UnitTests.Shared;
 using System.Reflection;
 
 namespace projectQuotes.UnitTests;
@@ -16,9 +18,12 @@ public class SharedUnitTest
 
     protected AppDbContext GetDatabaseContext()
     {
+
         var options = new DbContextOptionsBuilder<AppDbContext>()
-            .UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging().Options;
-        var databaseContext = new AppDbContext(options);
+            .UseInMemoryDatabase(Guid.NewGuid().ToString()).EnableSensitiveDataLogging()
+            .ConfigureWarnings(w => w.Ignore(InMemoryEventId.TransactionIgnoredWarning))
+            .Options;
+        var databaseContext = new TestAppDbContext(options);
         databaseContext.Database.EnsureCreated();
 
         return databaseContext;

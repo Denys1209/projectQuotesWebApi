@@ -30,6 +30,8 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 
     public DbSet<TagQuote> TagQuotes { get; set; }
 
+    public DbSet<NoteOnQuote> NoteOnQuotes { get; set; }
+
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
         Database.EnsureCreated();

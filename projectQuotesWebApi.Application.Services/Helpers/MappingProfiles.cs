@@ -8,6 +8,7 @@ using projectQuotes.Domain.Models.Enteties;
 using projectQuotes.Dtos.Dto.Models.Acts;
 using projectQuotes.Dtos.Dto.Models.Authors;
 using projectQuotes.Dtos.Dto.Models.Charcters;
+using projectQuotes.Dtos.Dto.Models.NoteOnQuotes;
 using projectQuotes.Dtos.Dto.Models.Quotes;
 using projectQuotes.Dtos.Dto.Models.Scenes;
 using projectQuotes.Dtos.Dto.Models.Tags;
@@ -99,6 +100,14 @@ public class MappingProfiles : Profile
         CreateMap<UpdateQuoteDto, Quote>();
 
         CreateMap<CreateQuoteDto, Quote>();
+
+        //NoteOnQuote
+        CreateMap<NoteOnQuote, GetNoteOnQuoteDto>();
+
+        CreateMap<UpdateNoteOnQuoteDto, NoteOnQuote>();
+
+        CreateMap<CreateNoteOnQuoteDto, NoteOnQuote>();
+
 
 
 

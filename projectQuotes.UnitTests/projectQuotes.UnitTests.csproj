@@ -5,7 +5,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
-    <RunSettingsFilePath>D:\Codes\ASP.NET\projectQuotesWebApi\projectQuotes.UnitTests\bin\Debug\net9.0\fine-code-coverage\coverage-tool-output\projectQuotes.UnitTests-fcc-mscodecoverage-generated.runsettings</RunSettingsFilePath>
   </PropertyGroup>
 
   <ItemGroup>

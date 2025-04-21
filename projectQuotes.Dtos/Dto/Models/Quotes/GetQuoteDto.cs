@@ -24,5 +24,7 @@ public class GetQuoteDto : ModelDtoWithTimeStamp
 
     public required string Description { get; set; }
 
+    public required bool IsPublished { get; set; }
+
 
 }

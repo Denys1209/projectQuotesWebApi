@@ -43,7 +43,8 @@ public class SharedQuoteModels : SharedModelsBase, IShareModels<CreateQuoteDto, 
             Creator = SharedUserModels.GetSample(),
             Description = "sas",
             QuoteText = "sasa",
-            Tags = []
+            Tags = [],
+            IsPublished = false,
 
         };
     }
@@ -58,7 +59,8 @@ public class SharedQuoteModels : SharedModelsBase, IShareModels<CreateQuoteDto, 
             CreatorId = Guid.NewGuid(),
             Description = "sasa",
             QuoteText = "sasa",
-            TagIds = [Guid.NewGuid()]
+            TagIds = [Guid.NewGuid()],
+            IsPublished = false,
         };
     }
 
@@ -72,7 +74,8 @@ public class SharedQuoteModels : SharedModelsBase, IShareModels<CreateQuoteDto, 
             Creator = SharedUserModels.GetSampleForUpdate(),
             Description = "sasa",
             QuoteText = "sasa",
-            Tags= []    
+            Tags= [],
+            IsPublished = true,
             
         };
     }
@@ -87,7 +90,8 @@ public class SharedQuoteModels : SharedModelsBase, IShareModels<CreateQuoteDto, 
             CreatorId= Guid.NewGuid(),
             Description = "3223",
             QuoteText = "2121",
-            TagIds= [Guid.NewGuid()]
+            TagIds= [Guid.NewGuid()],
+            IsPublished = true,
         };
     }
 }

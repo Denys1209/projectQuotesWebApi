@@ -27,4 +27,5 @@ public class UpdateQuoteDto :ModelDto
 
     public required string Description { get; set; }
 
+    public required bool IsPublished { get; set; }
 }

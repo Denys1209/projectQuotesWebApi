@@ -24,4 +24,6 @@ public class CreateQuoteDto
     public required string Context { get; set; }
 
     public required string Description { get; set; }
+
+    public required bool IsPublished { get; set; }
 }

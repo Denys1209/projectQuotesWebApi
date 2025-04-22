@@ -13,7 +13,7 @@ public class GetTagDto : ModelDto
 
     public required string Slug { get; set; }
 
-    public required string Describtion { get; set; }
+    public required string Description { get; set; }
 
 
 }

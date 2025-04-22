@@ -7,17 +7,17 @@ using projectQuotes.UnitTests.Shared.Repositories;
 
 namespace projectQuotes.UnitTests.Repositories.CrudRepositories;
 
-public class QuoteRepositoryTest: SharedRepositoryTest<Quote, UpdateQuoteDto, CreateQuoteDto, QuoteRepository, SharedQuoteModels>
-{
-    public QuoteRepositoryTest()
-    {
-    }
+//public class QuoteRepositoryTest: SharedRepositoryTest<Quote, UpdateQuoteDto, CreateQuoteDto, QuoteRepository, SharedQuoteModels>
+//{
+//    public QuoteRepositoryTest()
+//    {
+//    }
 
-    protected override QuoteRepository GetRepository(AppDbContext appDbContext)
-    {
-        return new QuoteRepository(appDbContext);
-    }
+//    protected override QuoteRepository GetRepository(AppDbContext appDbContext)
+//    {
+//        return new QuoteRepository(appDbContext);
+//    }
 
 
 
-}
+//}

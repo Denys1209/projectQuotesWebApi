@@ -15,8 +15,8 @@ public class Tag : Model
     [StringLength(TagConstants.SlugLength)]
     public required string Slug { get; set; }
 
-    [StringLength(TagConstants.DescribtionLength)]
-    public required string Describtion { get; set; }
+    [StringLength(TagConstants.DescriptionLength)]
+    public required string Description { get; set; }
 
     public  virtual ICollection<Quote> Quotes { get; set; } = new HashSet<Quote>();
 

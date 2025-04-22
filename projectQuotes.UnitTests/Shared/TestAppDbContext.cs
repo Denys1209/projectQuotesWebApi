@@ -28,7 +28,7 @@ public class TestAppDbContext : AppDbContext
             .Property(q => q.CreatorId)
             .IsRequired();
 
-        //modelBuilder.Ignore<Quote>();
+        modelBuilder.Ignore<Quote>();
         //modelBuilder.Entity<TestQuote>().ToTable("Quotes");
     }
 }

@@ -12,11 +12,11 @@ public class GetQuoteDto : ModelDtoWithTimeStamp
 {
    public required GetTextDto Text { get; set; }
 
-    public required GetCharacterDto Character { get; set; }
+    public required GetLightCharacterDto Character { get; set; }
 
     public required GetLightUserDto Creator { get; set; }
 
-    public required List<GetTagDto> Tags { get; set; }
+    public required List<GetLightTagDto> Tags { get; set; }
 
     public required string QuoteText { get; set; }
 

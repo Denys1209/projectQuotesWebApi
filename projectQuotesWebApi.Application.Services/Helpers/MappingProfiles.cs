@@ -83,12 +83,16 @@ public class MappingProfiles : Profile
         //Character
         CreateMap<Character, GetCharacterDto>();
 
+        CreateMap<Character, GetLightCharacterDto>();
+
         CreateMap<UpdateCharacterDto, Character>();
 
         CreateMap<CreateCharacterDto, Character>();
 
         //Tag
         CreateMap<Tag, GetTagDto>();
+
+        CreateMap<Tag, GetLightTagDto>();
 
         CreateMap<UpdateTagDto, Tag>();
 

@@ -5,5 +5,5 @@ public static class TagConstants
 
     public const int SlugLength = 128;
 
-    public const int DescribtionLength = 128;
+    public const int DescriptionLength = 128;
 }

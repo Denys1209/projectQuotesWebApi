@@ -54,4 +54,6 @@ public class QuoteService : CrudService<GetQuoteDto, CreateQuoteDto, UpdateQuote
         await Repository.UpdateAsync(model, cancellationToken);
     }
 
+
+
 }

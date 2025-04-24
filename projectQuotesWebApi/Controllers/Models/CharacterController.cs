@@ -1,5 +1,8 @@
-﻿using projectQuotes.Domain.Models.Enteties;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using projectQuotes.Domain.Models.Enteties;
 using projectQuotes.Dtos.Dto.Models.Charcters;
+using projectQuotes.Dtos.Shared;
 using projectQuotesWebApi.Application.Services.Models.Chracters;
 using projectQuotesWebApi.Shared;
 
@@ -9,5 +12,14 @@ public class CharacterController : CrudController<GetCharacterDto, UpdateCharact
 {
     public CharacterController(ICharacterService crudService, IHttpContextAccessor httpContextAccessor) : base(crudService, httpContextAccessor)
     {
+    }
+
+    [HttpPost("GetAll")]
+    [AllowAnonymous]
+    public override async Task<IActionResult> GetAll([FromBody] FilterPaginationDto paginationDto,
+       CancellationToken cancellationToken)
+    {
+
+        return await base.GetAll(paginationDto, cancellationToken);
     }
 }

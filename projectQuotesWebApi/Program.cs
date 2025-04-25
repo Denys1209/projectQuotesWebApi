@@ -29,7 +29,7 @@ builder.Services.AddSwaggerGen(c =>
     //c.OperationFilter<ColumnSelectorOperationFilter>();
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "My API",
+        Title = "Quote Craft",
         Version = "v1"
     });
     //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

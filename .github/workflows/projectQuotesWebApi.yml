@@ -83,6 +83,7 @@ jobs:
         --service-url "${{ env.AZURE_APIM_APPSERVICEURL }}" \
         --display-name "Quote Craft API" \
         --specification-format "OpenApi" \
+        --specification-path "${{ env.API_IMPORT_SPECIFICATION_PATH }}" \
         --protocols https
     - name: logout
       run: >

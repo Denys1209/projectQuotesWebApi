@@ -79,15 +79,21 @@ jobs:
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-    - name: Create API in Azure API Management
+    - name: Generate Swagger/OpenAPI Specification
       run: |
-        az apim api create --path "${{ env.AZURE_APIM_RESOURCE_PATH }}" \
+        swagger tofile --output "${{ env.API_IMPORT_SPECIFICATION_PATH }}" "${{ env.API_IMPORT_DLL }}" "${{ env.API_IMPORT_VERSION }}"
+    - name: Import API to Azure API Management
+      run: |
+        az apim api import \
         --resource-group "${{ env.AZURE_APIM_RESOURCEGROUP }}" \
         --service-name "${{ env.AZURE_APIM_SERVICENAME }}" \
         --api-id "${{ env.AZURE_APIM_API_ID }}" \
-        --service-url "${{ env.AZURE_APIM_APPSERVICEURL }}" \
+        --path "${{ env.AZURE_APIM_RESOURCE_PATH }}" \
         --display-name "Quote Craft API" \
-        --protocols https
+        --protocols https \
+        --service-url "${{ env.AZURE_APIM_APPSERVICEURL }}" \
+        --specification-format OpenApi \
+        --specification-path "${{ env.API_IMPORT_SPECIFICATION_PATH }}"
     - name: logout
       run: >
         az logout

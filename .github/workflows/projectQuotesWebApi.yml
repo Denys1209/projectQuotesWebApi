@@ -49,6 +49,11 @@ jobs:
     - name: Create appsettings.json
       run: |
         echo '${{ secrets.APPSETTINGS_JSON_CONTENT }}' > ${{ env.WORKING_DIRECTORY }}/appsettings.json
+    - name: Publish
+      run: dotnet publish ${{ env.WORKING_DIRECTORY }} --configuration ${{ env.CONFIGURATION }} --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+    - name: Ensure appsettings.json in publish directory
+      run: |
+        echo '${{ secrets.APPSETTINGS_JSON_CONTENT }}' > ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/appsettings.json
     - name: Publish Artifacts
       uses: actions/upload-artifact@v4
       with:

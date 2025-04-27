@@ -49,11 +49,6 @@ jobs:
     - name: Create appsettings.json
       run: |
         echo '${{ secrets.APPSETTINGS_JSON_CONTENT }}' > ${{ env.WORKING_DIRECTORY }}/appsettings.json
-    - name: Generate Swagger JSON
-      run: |
-        dotnet tool restore
-        dotnet swagger tofile --output "${{ env.API_IMPORT_SPECIFICATION_PATH }}" --host ${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net "${{ env.API_IMPORT_DLL }}" "${{ env.API_IMPORT_VERSION }}"
-      working-directory: ${{ env.WORKING_DIRECTORY }}
     - name: Publish
       run: dotnet publish ${{ env.WORKING_DIRECTORY }} --configuration ${{ env.CONFIGURATION }} --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
     - name: Ensure appsettings.json in publish directory
